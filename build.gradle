@@ -1,0 +1,33 @@
+import static org.gradle.jvm.toolchain.JavaLanguageVersion.of
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.12'
+
+}
+
+group = 'com.hla'
+version = '1.0-SNAPSHOT'
+java {
+    toolchain {
+        languageVersion = of(17)
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.3.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.3.2'
+    implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client:6.4.1'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

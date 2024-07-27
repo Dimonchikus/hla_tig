@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: tig_stack
+server:
+  port: 8081
