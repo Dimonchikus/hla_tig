@@ -1,5 +1,6 @@
 package com.hla;
 
+import java.util.logging.Logger;
 import org.bson.Document;
 import org.elasticsearch.action.main.MainResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class GFGController {
 
+    private final static Logger LOGGER = Logger.getLogger(GFGController.class.getName());
     private final MongoTemplate mongoTemplate;
     private final RestHighLevelClient elasticClient;
 
@@ -26,6 +28,7 @@ public class GFGController {
         var response = new StringBuilder();
         pingMongo(response);
         pingElastic(response);
+        LOGGER.info("Get request. Response: " + response);
         return response.toString();
     }
 
