@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the number of requests and concurrency level
-NUM_REQUESTS=10000
+NUM_REQUESTS=100000
 CONCURRENCY=10
 URL="http://localhost/"
 
