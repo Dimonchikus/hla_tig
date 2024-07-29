@@ -44,11 +44,22 @@ services:
     networks:
       - app_network
 
+  tig_stack_app:
+    container_name: tig_stack_app
+    build: .
+    ports:
+      - "8081:8081"
+    networks:
+      - app_network
+    depends_on:
+      - mongo
+      - elasticsearch
+
   mongo:
     image: mongo:latest
     container_name: mongo
     ports:
-      - "127.0.0.1:27017:27017"
+      - "27017:27017"
     volumes:
       - ./mongo/data:/data/db
     networks:
@@ -81,14 +92,6 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - tig_stack_app
-    networks:
-      - app_network
-
-  tig_stack_app:
-    container_name: tig_stack_app
-    build: .
-    ports:
-      - "8081:8081"
     networks:
       - app_network
 
